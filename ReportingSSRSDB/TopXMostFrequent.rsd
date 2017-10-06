@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Description />
+  <DataSet Name="TopXMostFrequent">
+    <Query>
+      <DataSourceReference>ReportServerDB</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@TopX">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>true</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+        </DataSetParameter>
+        <DataSetParameter Name="@DateFrom">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>true</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+        </DataSetParameter>
+        <DataSetParameter Name="@DateTo">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>true</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>SELECT TOP (@TopX)
+	  COUNT(Name) AS ExecutionCount
+	, Name
+	, Folder
+	, ItemPath
+	, SUM(TimeDataRetrieval) AS TimeDataRetrievalSum
+	, SUM(TimeProcessing) AS TimeProcessingSum
+	, SUM(TimeRendering) AS TimeRenderingSum
+	, SUM(ByteCount) AS ByteCountSum
+	, SUM([RowCount]) AS RowCountSum
+FROM
+(
+	SELECT TimeStart, C1.Type, C1.Name, C2.Name AS Folder, ItemPath, TimeDataRetrieval, TimeProcessing, TimeRendering, ByteCount, [RowCount]
+	FROM Catalog C1 INNER JOIN ExecutionLog3 
+		ON C1.Path = ExecutionLog3.ItemPath INNER JOIN Catalog C2
+		ON C1.ParentID = C2.ItemID
+ 	WHERE ExecutionLog3 .TimeStart BETWEEN @DateFrom AND @DateTo AND C1.Type = 2
+) AS RE
+GROUP BY
+		Name, Folder, ItemPath
+ORDER BY 
+	    COUNT(Name) DESC
+	  , Name</CommandText>
+      <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+    </Query>
+    <Fields>
+      <Field Name="ExecutionCount">
+        <DataField>ExecutionCount</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Name">
+        <DataField>Name</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Folder">
+        <DataField>Folder</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="ItemPath">
+        <DataField>ItemPath</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="TimeDataRetrievalSum">
+        <DataField>TimeDataRetrievalSum</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="TimeProcessingSum">
+        <DataField>TimeProcessingSum</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="TimeRenderingSum">
+        <DataField>TimeRenderingSum</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="ByteCountSum">
+        <DataField>ByteCountSum</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
+      </Field>
+      <Field Name="RowCountSum">
+        <DataField>RowCountSum</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

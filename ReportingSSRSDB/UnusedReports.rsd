@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Description />
+  <DataSet Name="UnusedReports">
+    <Query>
+      <DataSourceReference>ReportServerDB</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@DateFrom">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>true</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+        <DataSetParameter Name="@DateTo">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>true</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>SELECT Name, Path, UserName
+FROM Catalog INNER JOIN dbo.Users ON Catalog.CreatedByID = Users.UserID
+WHERE Type = 2 AND
+	Catalog.Path NOT IN
+	(
+		SELECT ExecutionLog3.ItemPath
+		FROM ExecutionLog3
+ 		WHERE ExecutionLog3.TimeStart BETWEEN @DateFrom AND @DateTo
+	)</CommandText>
+      <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+    </Query>
+    <Fields>
+      <Field Name="Name">
+        <DataField>Name</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Path">
+        <DataField>Path</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="UserName">
+        <DataField>UserName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
