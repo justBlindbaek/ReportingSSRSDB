@@ -997,10 +997,7 @@ WHERE CAST([dbo].[Subscriptions].SubscriptionID AS Varchar(100)) = (@Subscriptio
                   <Width>1.57396cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>2.20896cm</Width>
+                  <Width>3.61328cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.20896cm</Width>
@@ -1012,7 +1009,7 @@ WHERE CAST([dbo].[Subscriptions].SubscriptionID AS Varchar(100)) = (@Subscriptio
                   <Width>2.17146cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>3.50542cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1071,39 +1068,6 @@ WHERE CAST([dbo].[Subscriptions].SubscriptionID AS Varchar(100)) = (@Subscriptio
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox28</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>LightGrey</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox31">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>User Name</Value>
-                                  <Style>
-                                    <FontWeight>Bold</FontWeight>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox30</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -1358,39 +1322,6 @@ WHERE CAST([dbo].[Subscriptions].SubscriptionID AS Varchar(100)) = (@Subscriptio
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="UserName">
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!UserName.Value</Value>
-                                  <Style>
-                                    <FontSize>9pt</FontSize>
-                                    <TextDecoration>None</TextDecoration>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>UserName</rd:DefaultName>
-                          <ToolTip>=Fields!UserName.Value</ToolTip>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
                         <Textbox Name="Parameters">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -1566,7 +1497,6 @@ WHERE CAST([dbo].[Subscriptions].SubscriptionID AS Varchar(100)) = (@Subscriptio
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
-                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -1583,7 +1513,7 @@ WHERE CAST([dbo].[Subscriptions].SubscriptionID AS Varchar(100)) = (@Subscriptio
             <Top>7.26282cm</Top>
             <Left>0.28604cm</Left>
             <Height>1.2cm</Height>
-            <Width>18.42791cm</Width>
+            <Width>18.33765cm</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
